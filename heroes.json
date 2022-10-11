@@ -1,35 +1,55 @@
 {
   "heroes": [
     {
-      "name": "dfdfhs",
-      "element": "fire",
-      "description": "ннноео",
-      "id": 1665502588994
-    },
-    {
-      "name": "dgegeg",
-      "element": "wind",
-      "description": "пррнрен",
-      "id": 1665502612097
-    },
-    {
-      "name": "Дмитрий",
-      "element": "earth",
-      "description": "уреркер",
-      "id": 1665502626043
-    },
-    {
-      "name": "Дмитрий",
+      "name": "Дмитрийfhnhn",
       "element": "water",
-      "description": "еренрнр",
-      "id": 1665502951030
+      "description": "hnhnhn",
+      "id": 1665520965931
+    },
+    {
+      "name": "ntynytn",
+      "element": "wind",
+      "description": "tnthntn",
+      "id": 1665520972090
+    },
+    {
+      "name": "tyntynyn",
+      "element": "earth",
+      "description": "hntyn",
+      "id": 1665520976257
+    },
+    {
+      "name": "Дмитрий",
+      "element": "fire",
+      "description": "rterg",
+      "id": 1665522451229
     }
   ],
   "filters": [
-    "all",
-    "fire",
-    "water",
-    "wind",
-    "earth"
+    {
+      "filter": "all",
+      "lable": "Всі",
+      "clazz": "btn-outline-dark"
+    },
+    {
+      "filter": "fire",
+      "lable": "Вогонь",
+      "clazz": "btn-danger"
+    },
+    {
+      "filter": "water",
+      "lable": "Вода",
+      "clazz": "btn-primary"
+    },
+    {
+      "filter": "wind",
+      "lable": "Вітер",
+      "clazz": "btn-success"
+    },
+    {
+      "filter": "earth",
+      "lable": "Земля",
+      "clazz": "btn-secondary"
+    }
   ]
 }

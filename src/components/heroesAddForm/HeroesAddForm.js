@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useHttp } from "../../hooks/http.hook";
 import { heroCreated, heroesFetchingError } from "../../actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 const HeroesAddForm = () => {
  const [description, setDescription] = useState('');
  const [heroName, setHeroName] = useState('');
@@ -11,6 +11,7 @@ const HeroesAddForm = () => {
 
  const {request} = useHttp();
  const dispatch = useDispatch();
+ const {filters} = useSelector(state => state);
 
   const addItem  = (e) =>{
    e.preventDefault()
@@ -30,6 +31,7 @@ const HeroesAddForm = () => {
     setElement('')
   }
 
+  
     return (
         <form onSubmit={addItem} className="border p-4 shadow-lg rounded">
             <div className="mb-3">
