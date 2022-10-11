@@ -1,0 +1,41 @@
+{
+  "heroes": [
+    {
+      "name": "Дмитрий",
+      "element": "water",
+      "description": "fuofuf",
+      "id": 1665482039667
+    },
+    {
+      "name": "ssrgergh",
+      "element": "wind",
+      "description": "uguyfyuf",
+      "id": 1665482066199
+    },
+    {
+      "name": "wr",
+      "element": "earth",
+      "description": ";ugyfyug",
+      "id": 1665482231601
+    },
+    {
+      "name": "Дмитрий",
+      "element": "water",
+      "description": "eththrth",
+      "id": 1665488040261
+    },
+    {
+      "name": "Дмитрий",
+      "element": "fire",
+      "description": "f",
+      "id": 1665490096685
+    }
+  ],
+  "filters": [
+    "all",
+    "fire",
+    "water",
+    "wind",
+    "earth"
+  ]
+}
