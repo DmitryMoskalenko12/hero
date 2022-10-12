@@ -8,11 +8,10 @@ const HeroesAddForm = () => {
  const [heroName, setHeroName] = useState('');
  const [element, setElement] = useState('');
  
-
- const {request} = useHttp();
+ const {filters, filterLoadingStatus} = useSelector(state => state);
  const dispatch = useDispatch();
- const {filters} = useSelector(state => state);
-
+ const {request} = useHttp();
+ 
   const addItem  = (e) =>{
    e.preventDefault()
    const newItem={
@@ -31,6 +30,22 @@ const HeroesAddForm = () => {
     setElement('')
   }
 
+  const renderFilters = (arr, status) => {
+    if (status === "loading") {
+        return <option>Загрузка элементов</option>
+    } else if (status === "error") {
+        return <option>Ошибка загрузки</option>
+    }
+    
+    if (arr && arr.length > 0 ) {
+        return arr.map(({filter, lable}) => {
+            // eslint-disable-next-line
+            if (filter === 'all')  return;
+
+            return <option key={filter} value={filter}>{lable}</option>
+        })
+    }
+}
   
     return (
         <form onSubmit={addItem} className="border p-4 shadow-lg rounded">
@@ -69,11 +84,8 @@ const HeroesAddForm = () => {
                     className="form-select" 
                     id="element" 
                     name="element">
-                    <option >Я владею элементом...</option>
-                    <option value="fire">Огонь</option>
-                    <option value="water">Вода</option>
-                    <option value="wind">Ветер</option>
-                    <option value="earth">Земля</option>
+                    <option value="">Я владею элементом...</option>  
+                    {renderFilters(filters, filterLoadingStatus)}
                 </select>
             </div>
 

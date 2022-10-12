@@ -19,9 +19,9 @@ const {filters, activeFilter, filterLoadingStatus } = useSelector(state => state
     dispatch(filterFetching())
     request('http://localhost:3001/filters')
           .then((data) => dispatch(filterFetched(data)))
-          .catch(dispatch(filterFetchingError()))
+          .catch(() => dispatch(filterFetchingError()))
           //eslint-disable-next-line
-  },[])
+  },[]);
   
   if (filterLoadingStatus  === "loading") {
     return <Spinner/>;
@@ -37,7 +37,7 @@ const createFilters = (filtersArr) =>{
     return filtersArr.map(({filter, lable, clazz })=>{
       let active = activeFilter === filter ? 'active' : null
       return(
-        <button key={filter} onClick={() => dispatch(activeFilterElement(filter))} className={`btn ${clazz} ${active}`}>{lable}</button>
+        <button id={filter} key={filter} onClick={() => dispatch(activeFilterElement(filter))} className={`btn ${clazz} ${active}`}>{lable}</button>
       )
     })
 }
