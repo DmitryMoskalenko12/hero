@@ -1,8 +1,9 @@
 
 import { useState } from "react";
 import { useHttp } from "../../hooks/http.hook";
-import { heroCreated, heroesFetchingError } from "../../actions";
+import { heroesCreated, heroesFetchingError } from "../heroesList/heroesSlice";
 import { useDispatch, useSelector } from "react-redux";
+
 const HeroesAddForm = () => {
  const [description, setDescription] = useState('');
  const [heroName, setHeroName] = useState('');
@@ -22,7 +23,7 @@ const HeroesAddForm = () => {
    }
 
    request('http://localhost:3001/heroes', 'POST', JSON.stringify(newItem))
-      .then((item) => dispatch(heroCreated(item))) 
+      .then((item) => dispatch(heroesCreated(item))) 
       .catch(() => dispatch(heroesFetchingError())) 
 
     setDescription('');

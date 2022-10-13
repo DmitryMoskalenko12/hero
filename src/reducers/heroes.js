@@ -1,4 +1,4 @@
-const initialState = {
+/* const initialState = {
   heroes: [],
   heroesLoadingStatus: 'idle'
 }
@@ -39,4 +39,4 @@ const heroes = (state = initialState, action) => {
   }
 }
 
-export default heroes;
+export default heroes; */
