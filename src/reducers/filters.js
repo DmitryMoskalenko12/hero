@@ -1,4 +1,4 @@
-const initialState = {
+/* const initialState = {
   filters: [],
   activeFilter:'all',
   filterLoadingStatus: 'idle'
@@ -34,4 +34,4 @@ const filters = (state = initialState, action) => {
   }
 }
 
-export default filters;
+export default filters; */

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHttp } from "../../hooks/http.hook";
-import { /* filterFetched, filterFetching, filterFetchingError, */ activeFilterElement, fetchFilters } from "../../actions";
+import { /* filterFetched, filterFetching, filterFetchingError, */ filtersActiveElement } from "./filtersSlice";
+import { fetchFilters } from "../../actions";
 import { useEffect } from "react";
 import Spinner from "../spinner/Spinner";
 
@@ -28,7 +29,7 @@ const createFilters = (filtersArr) =>{
     return filtersArr.map(({filter, lable, clazz })=>{
       let active = activeFilter === filter ? 'active' : null
       return(
-        <button id={filter} key={filter} onClick={() => dispatch(activeFilterElement(filter))} className={`btn ${clazz} ${active}`}>{lable}</button>
+        <button id={filter} key={filter} onClick={() => dispatch(filtersActiveElement(filter))} className={`btn ${clazz} ${active}`}>{lable}</button>
       )
     })
 }
