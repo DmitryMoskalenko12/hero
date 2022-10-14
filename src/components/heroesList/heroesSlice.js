@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import useHttp from '../../hooks/http.hook';
+import {useHttp} from '../../hooks/http.hook';
 
 
 const initialState = {
   heroes: [],
   heroesLoadingStatus: 'idle'
 }
-const fetchHeroes = createAsyncThunk(
+
+export const fetchHeroes = createAsyncThunk(
   'heroes/fetchHeroes',
   () => {
   const {request} = useHttp();
@@ -18,7 +19,7 @@ const heroes = createSlice({
   name: 'heroes',
   initialState,
   reducers:{
-    heroesFetching: state => {
+   /*  heroesFetching: state => {
       state.heroesLoadingStatus = 'loading';
     },
     heroesFetched: (state, action) => {
@@ -27,13 +28,27 @@ const heroes = createSlice({
     },
     heroesFetchingError: state => {
       state.heroesLoadingStatus = 'error';
-    },
+    }, */
     heroesCreated: (state, action) => {
       state.heroes.push(action.payload);
     },
     heroesDeleted: (state, action) => {
       state.heroes = state.heroes.filter(item =>  item.id !== action.payload);  
     }
+  },
+  extraReducers: builder => {
+    builder
+    .addCase(fetchHeroes.pending, state => {
+      state.heroesLoadingStatus = 'loading';
+    })
+    .addCase(fetchHeroes.fulfilled, (state, action) => {
+      state.heroesLoadingStatus = 'idle';
+      state.heroes = action.payload;
+     })
+    .addCase(fetchHeroes.rejected, state => {
+      state.heroesLoadingStatus = 'error';
+    })
+    .addDefaultCase(() => {})
   }
 })
 
