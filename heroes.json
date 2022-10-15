@@ -7,46 +7,51 @@
       "id": 1665664724437
     },
     {
-      "name": "Дмитрий",
+      "name": "yttyjtyj",
       "element": "earth",
-      "description": "bgfnfg",
-      "id": 1665691515538
+      "description": "tjtjt",
+      "id": 1665771806544
     },
     {
       "name": "Дмитрий",
       "element": "wind",
-      "description": "fdbg",
-      "id": 1665691813799
+      "description": "dfgrtgrt",
+      "id": 1665774747566
     },
     {
       "name": "Дмитрий",
       "element": "fire",
-      "description": "rtbrttb",
-      "id": 1665751766429
+      "description": "thgrthrth",
+      "id": 1665774760192
     }
   ],
   "filters": [
     {
+      "id": "all",
       "filter": "all",
       "lable": "Всі",
       "clazz": "btn-outline-dark"
     },
     {
+      "id": "fire",
       "filter": "fire",
       "lable": "Вогонь",
       "clazz": "btn-danger"
     },
     {
+      "id": "water",
       "filter": "water",
       "lable": "Вода",
       "clazz": "btn-primary"
     },
     {
+      "id": "wind",
       "filter": "wind",
       "lable": "Вітер",
       "clazz": "btn-success"
     },
     {
+      "id": "earth",
       "filter": "earth",
       "lable": "Земля",
       "clazz": "btn-secondary"

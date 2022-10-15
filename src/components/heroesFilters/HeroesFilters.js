@@ -4,11 +4,14 @@ import { /* filterFetched, filterFetching, filterFetchingError, */ filtersActive
 /* import { fetchFilters } from "../../actions"; */
 import { useEffect } from "react";
 import Spinner from "../spinner/Spinner";
+import { selectAll } from "./filtersSlice";
+import store from '../../store';
 
 const HeroesFilters = () => {
 /* const {request} = useHttp(); */
 const dispatch = useDispatch();
-const {filters, activeFilter, filterLoadingStatus } = useSelector(state => state.filters);
+const { activeFilter, filterLoadingStatus } = useSelector(state => state.filters);
+const filters = selectAll(store.getState());
 
   useEffect(() =>{
     dispatch(fetchFilters())

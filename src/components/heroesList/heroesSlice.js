@@ -1,11 +1,16 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, createEntityAdapter, createSelector } from "@reduxjs/toolkit";
 import {useHttp} from '../../hooks/http.hook';
 
+const heroesAdapter = createEntityAdapter();
 
-const initialState = {
+const initialState = heroesAdapter.getInitialState({
+  heroesLoadingStatus: 'idle'
+})
+
+/* const initialState = {
   heroes: [],
   heroesLoadingStatus: 'idle'
-}
+} */
 
 export const fetchHeroes = createAsyncThunk(
   'heroes/fetchHeroes',
@@ -30,10 +35,10 @@ const heroes = createSlice({
       state.heroesLoadingStatus = 'error';
     }, */
     heroesCreated: (state, action) => {
-      state.heroes.push(action.payload);
+      heroesAdapter.addOne(state, action.payload) /* state.heroes.push(action.payload); */
     },
     heroesDeleted: (state, action) => {
-      state.heroes = state.heroes.filter(item =>  item.id !== action.payload);  
+      heroesAdapter.removeOne(state, action.payload)/* state.heroes = state.heroes.filter(item =>  item.id !== action.payload); */  
     }
   },
   extraReducers: builder => {
@@ -43,7 +48,7 @@ const heroes = createSlice({
     })
     .addCase(fetchHeroes.fulfilled, (state, action) => {
       state.heroesLoadingStatus = 'idle';
-      state.heroes = action.payload;
+      heroesAdapter.setAll(state, action.payload)/* state.heroes = action.payload; */
      })
     .addCase(fetchHeroes.rejected, state => {
       state.heroesLoadingStatus = 'error';
@@ -52,6 +57,19 @@ const heroes = createSlice({
   }
 })
 
+const {selectAll} = heroesAdapter.getSelectors(state => state.heroes);
+
+export const filteredHeroesSelector = createSelector(
+  /* state => state.heroes.heroes, */ selectAll,
+state => state.filters.activeFilter,
+  (heroes, filter) => {
+    if (filter === 'all') {
+      return heroes
+    }else{
+     return heroes.filter(item => item.element === filter)
+    }
+  }
+)
 const {actions, reducer} = heroes;
 export const {heroesFetching, heroesFetched, heroesFetchingError, heroesCreated, heroesDeleted} = actions;
 export default reducer;
